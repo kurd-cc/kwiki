@@ -1,8 +1,11 @@
 import json
+import pkg_resources
 
+resource_package = __name__
 
-f = open('./wikiferheng.json', 'r', encoding='utf-8')
-data = json.load(f)
+resource_path = '/'.join(('data', 'wikiferheng.json'))  # Do not use os.path.join()
+f = pkg_resources.resource_string(resource_package, resource_path)
+data = json.loads(f)
 all_words = data['all_words']
 
 
@@ -90,4 +93,3 @@ def get_sounds(word):
             return {'sounds': word + ' sounds is not available'}
     except KeyError as ex:
         return {'error': word + ' sounds is not available'}
-

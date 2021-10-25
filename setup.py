@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.1'
+VERSION = '0.0.8'
 DESCRIPTION = 'A parser of the Kurdish wiktionary (Wikiferheng)'
 LONG_DESCRIPTION = 'A module that parse the Kurdish wiktionary with some useful and easy-to-use functions'
 
@@ -21,6 +21,8 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
+    package_data={find_packages()[0]: ['data/wikiferheng.json']},
+    include_package_data=True,
     setup_requires=['wheel'],
     url='https://github.com/kurd-cc/kwiki',
     keywords=['kurdish', 'language', 'language-processing', 'kurmanji', 'wiktionary', 'parser'],
